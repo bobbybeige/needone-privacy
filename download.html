@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get NeedOne</title>
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    background: #1A4D32;
+    color: #F5F0E6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 4px;
+  }
+  h1 .accent { color: #F5A623; }
+  p.tagline {
+    color: #CFC9BC;
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 320px;
+  }
+  a.store-btn {
+    display: block;
+    background: #F5A623;
+    color: #1A4D32;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 20px;
+    border-radius: 999px;
+    font-size: 1rem;
+  }
+  a.store-btn.secondary {
+    background: transparent;
+    color: #F5F0E6;
+    border: 1px solid #F5F0E6;
+  }
+  .redirect-note {
+    margin-top: 28px;
+    font-size: 0.8rem;
+    color: #9C9587;
+  }
+</style>
+</head>
+<body>
+  <h1>NEED<span class="accent">ONE</span></h1>
+  <p class="tagline">Never play short-handed.</p>
+
+  <div class="buttons">
+    <a class="store-btn" id="ios-link" href="https://apps.apple.com/app/id6799404704">Download on the App Store</a>
+    <a class="store-btn secondary" id="android-link" href="https://play.google.com/store/apps/details?id=com.bobby.needone">Get it on Google Play</a>
+  </div>
+
+  <p class="redirect-note">Redirecting you to the right store…</p>
+
+  <script>
+    (function () {
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var iosLink = document.getElementById('ios-link').href;
+      var androidLink = document.getElementById('android-link').href;
+
+      if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.replace(iosLink);
+      } else if (/android/i.test(ua)) {
+        window.location.replace(androidLink);
+      }
+      // Desktop or anything else: no auto-redirect, both buttons stay visible.
+    })();
+  </script>
+</body>
+</html>
